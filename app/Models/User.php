@@ -62,12 +62,6 @@ class User extends Authenticatable
         return $this->hasMany(Status::class);
     }
 
-    public function feed()
-    {
-        return $this->statuses()
-            ->orderBy('created_at', 'desc');
-    }
-
     public function followers()
     {
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
@@ -97,5 +91,14 @@ class User extends Authenticatable
             $user_ids = compact('user_ids');
         }
         $this->followings()->detach($user_ids);
+    }
+
+    public function feed()
+    {
+        $user_ids = $this->followings->pluck('id')->toArray();
+        array_push($user_ids, $this->id);
+        return Status::whereIn('user_id', $user_ids)
+            ->with('user')
+            ->orderBy('created_at', 'desc');
     }
 }
