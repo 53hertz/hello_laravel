@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="489fb8bc-d480-4042-a4ac-46728c1fa7d8" name="weibo.test" url="http://121.5.103.48">
+        <fileTransfer accessType="SFTP" host="121.5.103.48" port="22" sshConfigId="875b60f1-70f3-4046-86d8-79e0b897b841" sshConfig="root@121.5.103.48:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
